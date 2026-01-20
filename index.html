@@ -3,456 +3,946 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DGbet Pitch Deck - Mafexx</title>
+    <title>DGbet Social Media Strategy - Mafexx</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            line-height: 1.6;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .slide { 
-            min-height: 100vh; 
-            padding: 60px 20px; 
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .presentation {
+            width: 100%;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 80px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            margin-bottom: 2px;
+            position: relative;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        h1 { 
-            font-size: 3.5rem; 
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(0, 191, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(138, 43, 226, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header Logo */
+        .logo-header {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #00bfff, #8a2be2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            letter-spacing: -1px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00bfff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #00bfff 0%, #8a2be2 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+        
+        h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: #00bfff;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #00bfff, #8a2be2);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00bfff, #8a2be2);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 191, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 191, 255, 0.15);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #00bfff, #8a2be2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        h2 { font-size: 2.5rem; color: #00bfff; margin-bottom: 2rem; }
-        h3 { font-size: 1.5rem; color: #8a2be2; margin-bottom: 1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
-        .card { 
-            background: rgba(255,255,255,0.05); 
-            padding: 2rem; 
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
+        
+        /* Lists */
+        ul {
+            list-style: none;
+            margin-top: 1.5rem;
         }
-        .card:hover { border-color: #00bfff; }
-        ul { list-style: none; padding-left: 0; }
-        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
-        li::before { content: '→'; position: absolute; left: 0; color: #00bfff; }
-        .highlight { color: #00bfff; font-weight: bold; }
-        .stat { text-align: center; }
-        .stat-number { font-size: 3rem; font-weight: bold; color: #00bfff; }
-        .stat-label { color: #aaa; margin-top: 0.5rem; }
-        .price { font-size: 2.5rem; color: #00bfff; font-weight: bold; margin: 1rem 0; }
-        .badge { 
-            display: inline-block;
-            background: #00bfff;
-            color: #000;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+        
+        li {
+            padding: 0.9rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #d0d0d0;
+            transition: color 0.3s ease;
+        }
+        
+        li:hover {
+            color: #ffffff;
+        }
+        
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00bfff;
             font-weight: bold;
-            margin: 1rem 0;
+            font-size: 1.2rem;
         }
+        
+        li strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        /* Stats */
+        .stat {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: scale(1.05);
+        }
+        
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00bfff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            letter-spacing: -2px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #999;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        /* Highlight Elements */
+        .highlight {
+            color: #00bfff;
+            font-weight: 700;
+        }
+        
+        .warning {
+            color: #ff6b6b;
+        }
+        
+        .success {
+            color: #00ff88;
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00bfff, #8a2be2);
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+        }
+        
+        .badge-warning {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+        }
+        
+        .badge-success {
+            background: linear-gradient(135deg, #00ff88, #00d4aa);
+        }
+        
+        /* Pricing Cards */
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+        
+        .pricing-card.featured {
+            border-color: #00bfff;
+            background: rgba(0, 191, 255, 0.05);
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 191, 255, 0.2);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #8a2be2;
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00bfff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1.5rem 0;
+            letter-spacing: -2px;
+        }
+        
+        /* Buttons */
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, #00bfff, #8a2be2);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
+            padding: 1.3rem 3.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: bold;
             margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
+            letter-spacing: 0.5px;
         }
-        .btn:hover { transform: scale(1.05); }
-        .warning { color: #ff6b6b; }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 191, 255, 0.4);
+        }
+        
+        /* Icon Boxes */
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(138, 43, 226, 0.1));
+            border: 2px solid rgba(0, 191, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Image Placeholders */
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(138, 43, 226, 0.1));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .image-small {
+            height: 200px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #00bfff, #8a2be2);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4.5rem;
+            top: 0.5rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00bfff, #8a2be2);
+            border: 4px solid #0a0a0a;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+        }
+        
+        /* Special Alert Box */
+        .alert-box {
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid #ff6b6b;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        .success-box {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 4px solid #00ff88;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        /* Footer */
+        .slide-footer {
+            background: #000;
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
         @media print {
-            .slide { page-break-after: always; }
+            .slide {
+                page-break-after: always;
+            }
+            .logo-header {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .slide { padding: 60px 30px; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .logo-header { left: 30px; top: 30px; }
         }
     </style>
 </head>
 <body>
-
-<!-- Slide 1 -->
-<div class="slide">
-    <div class="container" style="text-align: center;">
-        <h1>Amplifying DGbet's Digital Dominance</h1>
-        <p style="font-size: 1.5rem; color: #aaa; margin: 2rem 0;">Social Media & Influencer Management Strategy</p>
-        <p style="font-size: 1.2rem; color: #00bfff;">A Strategic Proposal by Mafexx</p>
+    <div class="logo-header">
+        <div class="logo-icon">M</div>
+        <div class="logo-text">MAFEXX</div>
     </div>
-</div>
+    
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide">
+            <div class="container" style="text-align: center;">
+                <div style="margin-bottom: 3rem;">
+                    <i class="fas fa-rocket" style="font-size: 5rem; background: linear-gradient(135deg, #00bfff, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <h1>Amplifying DGbet's<br>Digital Dominance</h1>
+                <p class="subtitle">Social Media & Influencer Management Strategy</p>
+                <div style="margin-top: 3rem; font-size: 1.3rem; color: #999;">
+                    A Strategic Proposal by <span class="highlight" style="font-size: 1.5rem;">Mafexx</span>
+                </div>
+                <div style="margin-top: 2rem; color: #666; font-size: 1rem;">
+                    <i class="fas fa-calendar"></i> 2026 | <i class="fas fa-chart-line"></i> Growth Strategy
+                </div>
+            </div>
+        </div>
 
-<!-- Slide 2 -->
-<div class="slide">
-    <div class="container">
-        <h2>Executive Summary</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>🎯 Objective</h3>
-                <p>Transform DGbet's social presence with professional branding, HQ content, and strategic influencer partnerships</p>
-            </div>
-            <div class="card">
-                <h3>📊 Current State</h3>
-                <p>6K X followers but content quality issues affecting brand perception and engagement</p>
-            </div>
-            <div class="card">
-                <h3>⚠️ Critical Gaps</h3>
-                <p>Poor branding, low-quality visuals, weak engagement strategy, no influencer marketing</p>
-            </div>
-            <div class="card">
-                <h3>💡 Our Solution</h3>
-                <p>Complete content overhaul + influencer strategy + sports audience building</p>
+        <!-- Slide 2: Executive Summary -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-bullseye" style="color: #00bfff; font-size: 2.5rem;"></i> Executive Summary</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-target"></i>
+                        </div>
+                        <h3>🎯 Objective</h3>
+                        <p>Transform DGbet's social presence with professional branding, HQ content, and strategic influencer partnerships</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>📊 Current State</h3>
+                        <p><strong class="highlight">6K X followers</strong> but content quality issues affecting brand perception and engagement</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>⚠️ Critical Gaps</h3>
+                        <p>Poor branding, low-quality visuals, weak engagement strategy, no influencer marketing</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>💡 Our Solution</h3>
+                        <p>Complete content overhaul + influencer strategy + sports audience building</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Slide 3 -->
-<div class="slide">
-    <div class="container">
-        <h2>DGbet's Current Social Media Issues</h2>
-        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid #ff6b6b;">
-            <h3 class="warning">What's Falling Short</h3>
-            <ul>
-                <li><strong>Low branding on banners</strong> - Inconsistent visual identity</li>
-                <li><strong>Low engagement content</strong> - Posts not driving interaction</li>
-                <li><strong>Static images poorly created</strong> - Looks unofficial and unprofessional</li>
-                <li><strong>Platform updates poorly communicated</strong> - Missing storytelling</li>
-                <li><strong>No influencer strategy</strong> - Zero creator partnerships</li>
-                <li><strong>Limited sports content</strong> - Not leveraging sports audience potential</li>
-            </ul>
+        <!-- Slide 3: Current Issues -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-search" style="color: #ff6b6b;"></i> DGbet's Current Social Media Issues</h2>
+                <div class="alert-box">
+                    <h3 class="warning"><i class="fas fa-times-circle"></i> What's Falling Short</h3>
+                    <ul>
+                        <li><strong>Low branding on banners</strong> - Inconsistent visual identity</li>
+                        <li><strong>Low engagement content</strong> - Posts not driving interaction</li>
+                        <li><strong>Static images poorly created</strong> - Looks unofficial and unprofessional</li>
+                        <li><strong>Platform updates poorly communicated</strong> - Missing storytelling</li>
+                        <li><strong>No influencer strategy</strong> - Zero creator partnerships</li>
+                        <li><strong>Limited sports content</strong> - Not leveraging sports audience potential</li>
+                    </ul>
+                </div>
+                <div class="success-box">
+                    <h3 style="color: #00ff88;"><i class="fas fa-info-circle"></i> The Impact</h3>
+                    <p style="font-size: 1.15rem; line-height: 1.8;">These issues create an <strong>unofficial brand perception</strong>, limit growth potential, and fail to capitalize on the massive iGaming and Web3 opportunity. Professional content is non-negotiable in today's competitive landscape.</p>
+                </div>
+            </div>
         </div>
-        <div class="card" style="border-left: 4px solid #00ff88;">
-            <h3 style="color: #00ff88;">The Impact</h3>
-            <p>These issues create an <strong>unofficial brand perception</strong>, limit growth potential, and fail to capitalize on the massive iGaming and Web3 opportunity.</p>
-        </div>
-    </div>
-</div>
 
-<!-- Slide 4 -->
-<div class="slide">
-    <div class="container">
-        <h2>Bare Minimum to Achieve</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>📱 HQ Content</h3>
-                <p><strong>At least 2 posts per day</strong></p>
-                <ul>
-                    <li>Professional graphics & videos</li>
-                    <li>Consistent brand identity</li>
-                    <li>Platform-optimized formats</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🎨 Top-Notch Branding</h3>
-                <ul>
-                    <li>Premium banner designs</li>
-                    <li>Cohesive visual language</li>
-                    <li>Professional templates</li>
-                    <li>Brand guidelines enforcement</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🔥 Engaging Content</h3>
-                <ul>
-                    <li>Interactive posts</li>
-                    <li>Contests & giveaways</li>
-                    <li>User-generated content</li>
-                    <li>Community-driven campaigns</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>⚽ Sports Audience</h3>
-                <ul>
-                    <li>HQ sports content</li>
-                    <li>Live match coverage</li>
-                    <li>Sports influencer partnerships</li>
-                    <li>Betting tips & analysis</li>
-                </ul>
+        <!-- Slide 4: Bare Minimum -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-check-double" style="color: #00ff88;"></i> Bare Minimum to Achieve</h2>
+                <div class="grid-4">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>📱 HQ Content</h3>
+                        <p style="margin-bottom: 1rem;"><strong class="highlight">At least 2 posts per day</strong></p>
+                        <ul>
+                            <li>Professional graphics & videos</li>
+                            <li>Consistent brand identity</li>
+                            <li>Platform-optimized formats</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-palette"></i></div>
+                        <h3>🎨 Top-Notch Branding</h3>
+                        <ul>
+                            <li>Premium banner designs</li>
+                            <li>Cohesive visual language</li>
+                            <li>Professional templates</li>
+                            <li>Brand guidelines enforcement</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-fire"></i></div>
+                        <h3>🔥 Engaging Content</h3>
+                        <ul>
+                            <li>Interactive posts</li>
+                            <li>Contests & giveaways</li>
+                            <li>User-generated content</li>
+                            <li>Community-driven campaigns</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-futbol"></i></div>
+                        <h3>⚽ Sports Audience</h3>
+                        <ul>
+                            <li>HQ sports content</li>
+                            <li>Live match coverage</li>
+                            <li>Sports influencer partnerships</li>
+                            <li>Betting tips & analysis</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Slide 5 -->
-<div class="slide">
-    <div class="container">
-        <h2>The iGaming Influencer Boom</h2>
-        <div class="grid">
-            <div class="stat">
-                <div class="stat-number">$565B</div>
-                <div class="stat-label">iGaming Market by 2030</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">$5.78</div>
-                <div class="stat-label">ROI per $1 spent</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">72%</div>
-                <div class="stat-label">Asian users trust influencers</div>
+        <!-- Slide 5: Market Opportunity -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-chart-line"></i> The iGaming Influencer Boom</h2>
+                <div class="grid-3">
+                    <div class="stat">
+                        <i class="fas fa-dollar-sign" style="font-size: 3rem; color: #00bfff; margin-bottom: 1rem;"></i>
+                        <div class="stat-number">$565B</div>
+                        <div class="stat-label">iGaming Market by 2030<br><small>(from $231B in 2024)</small></div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-rocket" style="font-size: 3rem; color: #8a2be2; margin-bottom: 1rem;"></i>
+                        <div class="stat-number">$5.78</div>
+                        <div class="stat-label">ROI per $1 spent on<br>Influencer Marketing</div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-users" style="font-size: 3rem; color: #ffd700; margin-bottom: 1rem;"></i>
+                        <div class="stat-number">72%</div>
+                        <div class="stat-label">Asian users trust<br>influencer recommendations</div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 3rem;">
+                    <h3><i class="fas fa-lightbulb"></i> Why Now?</h3>
+                    <ul>
+                        <li>89% of marketers report influencer ROI matches or exceeds other channels</li>
+                        <li>Asian markets have highest mobile gaming penetration globally</li>
+                        <li>Web3 gaming audience highly engaged on social platforms</li>
+                        <li>Quality content + influencers = exponential growth opportunity</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="card" style="margin-top: 2rem;">
-            <ul>
-                <li>89% of marketers report influencer ROI matches or exceeds other channels</li>
-                <li>Asian markets have highest mobile gaming penetration globally</li>
-                <li>Web3 gaming audience highly engaged on social platforms</li>
-                <li>Quality content + influencers = exponential growth</li>
-            </ul>
-        </div>
-    </div>
-</div>
 
-<!-- Slide 6 -->
-<div class="slide">
-    <div class="container">
-        <h2>Our Complete Solution</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>🎨 Content Transformation</h3>
-                <ul>
-                    <li>Professional graphic design</li>
-                    <li>Premium video production</li>
-                    <li>Brand identity overhaul</li>
-                    <li>2+ HQ posts daily</li>
-                    <li>Platform updates storytelling</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🎬 Influencer Management</h3>
-                <ul>
-                    <li>Sports betting experts</li>
-                    <li>Casino streamers</li>
-                    <li>Web3/crypto influencers</li>
-                    <li>Gaming content creators</li>
-                    <li>Asian market influencers</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>⚽ Sports Audience Building</h3>
-                <ul>
-                    <li>HQ sports content creation</li>
-                    <li>Live match engagement</li>
-                    <li>Sports influencer partnerships</li>
-                    <li>Betting tips & analysis</li>
-                    <li>Sports community growth</li>
-                </ul>
+        <!-- Slide 6: Our Solution -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-cogs"></i> Our Complete Solution</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="image-placeholder image-small">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3><i class="fas fa-palette"></i> Content Transformation</h3>
+                        <ul>
+                            <li>Professional graphic design</li>
+                            <li>Premium video production</li>
+                            <li>Brand identity overhaul</li>
+                            <li>2+ HQ posts daily</li>
+                            <li>Platform updates storytelling</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="image-placeholder image-small">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3><i class="fas fa-users"></i> Influencer Management</h3>
+                        <ul>
+                            <li>Sports betting experts</li>
+                            <li>Casino streamers</li>
+                            <li>Web3/crypto influencers</li>
+                            <li>Gaming content creators</li>
+                            <li>Asian market influencers</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="image-placeholder image-small">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3><i class="fas fa-futbol"></i> Sports Audience Building</h3>
+                        <ul>
+                            <li>HQ sports content creation</li>
+                            <li>Live match engagement</li>
+                            <li>Sports influencer partnerships</li>
+                            <li>Betting tips & analysis</li>
+                            <li>Sports community growth</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Slide 7 -->
-<div class="slide">
-    <div class="container">
-        <h2>Multi-Tier Influencer Strategy</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Target Categories</h3>
-                <ul>
-                    <li>🎯 Sports Betting Experts & Tipsters</li>
-                    <li>🎰 Casino Streamers</li>
-                    <li>⛓️ Web3/Crypto Influencers</li>
-                    <li>🎮 Gaming Creators</li>
-                    <li>🌏 Asian Lifestyle Influencers</li>
-                    <li>⚽ Sports Content Creators</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Tier Strategy</h3>
-                <ul>
-                    <li><strong>Macro (500K+):</strong> Brand awareness</li>
-                    <li><strong>Mid (50K-500K):</strong> Niche authority</li>
-                    <li><strong>Micro (10K-50K):</strong> High engagement</li>
-                    <li><strong>Nano (1K-10K):</strong> Grassroots growth</li>
-                </ul>
-                <p style="margin-top: 1rem; color: #aaa;">Focus: English + Asian Languages (Thai, Vietnamese, Indonesian)</p>
+        <!-- Slide 7: Influencer Strategy -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-star"></i> Multi-Tier Influencer Strategy</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3><i class="fas fa-bullseye"></i> Target Categories</h3>
+                        <ul>
+                            <li><i class="fas fa-chart-line" style="color: #00bfff;"></i> Sports Betting Experts & Tipsters</li>
+                            <li><i class="fas fa-dice" style="color: #8a2be2;"></i> Casino Streamers</li>
+                            <li><i class="fab fa-bitcoin" style="color: #ffd700;"></i> Web3/Crypto Influencers</li>
+                            <li><i class="fas fa-gamepad" style="color: #00ff88;"></i> Gaming Creators</li>
+                            <li><i class="fas fa-globe-asia" style="color: #ff6b6b;"></i> Asian Lifestyle Influencers</li>
+                            <li><i class="fas fa-futbol" style="color: #00bfff;"></i> Sports Content Creators</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-layer-group"></i> Tier Strategy</h3>
+                        <ul>
+                            <li><strong>Macro (500K+):</strong> Brand awareness campaigns</li>
+                            <li><strong>Mid (50K-500K):</strong> Niche authority building</li>
+                            <li><strong>Micro (10K-50K):</strong> High engagement content</li>
+                            <li><strong>Nano (1K-10K):</strong> Grassroots community growth</li>
+                        </ul>
+                        <div class="badge" style="margin-top: 2rem;">
+                            <i class="fas fa-globe"></i> English + Asian Languages
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Slide 8 -->
-<div class="slide">
-    <div class="container">
-        <h2>90-Day Execution Framework</h2>
-        <div class="card">
-            <h3>Phase 1: Foundation (Days 1-30)</h3>
-            <ul>
-                <li>Complete brand identity refresh</li>
-                <li>Content templates & guidelines creation</li>
-                <li>Influencer outreach (50+ creators)</li>
-                <li>Sports content strategy development</li>
-            </ul>
+        <!-- Slide 8: 90-Day Framework -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-calendar-alt"></i> 90-Day Execution Framework</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3><i class="fas fa-flag"></i> Phase 1: Foundation (Days 1-30)</h3>
+                        <ul>
+                            <li>Complete brand identity refresh</li>
+                            <li>Content templates & guidelines creation</li>
+                            <li>Influencer outreach (50+ creators)</li>
+                            <li>Sports content strategy development</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3><i class="fas fa-rocket"></i> Phase 2: Activation (Days 31-60)</h3>
+                        <ul>
+                            <li>Launch 2+ HQ posts daily</li>
+                            <li>Activate 10-15 influencer partnerships</li>
+                            <li>Execute first sports content campaigns</li>
+                            <li>Launch engagement contests</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3><i class="fas fa-chart-line"></i> Phase 3: Scale (Days 61-90)</h3>
+                        <ul>
+                            <li>Expand to 20+ influencers</li>
+                            <li>Viral sports betting challenge</li>
+                            <li>Performance optimization</li>
+                            <li>Ambassador program launch</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card" style="margin-top: 1rem;">
-            <h3>Phase 2: Activation (Days 31-60)</h3>
-            <ul>
-                <li>Launch 2+ HQ posts daily</li>
-                <li>Activate 10-15 influencer partnerships</li>
-                <li>Execute first sports content campaigns</li>
-                <li>Launch engagement contests</li>
-            </ul>
-        </div>
-        <div class="card" style="margin-top: 1rem;">
-            <h3>Phase 3: Scale (Days 61-90)</h3>
-            <ul>
-                <li>Expand to 20+ influencers</li>
-                <li>Viral sports betting challenge</li>
-                <li>Performance optimization</li>
-                <li>Ambassador program launch</li>
-            </ul>
-        </div>
-    </div>
-</div>
 
-<!-- Slide 9 -->
-<div class="slide">
-    <div class="container">
-        <h2>Monthly Deliverables</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>📱 Content Creation</h3>
-                <ul>
-                    <li>60+ HQ social posts (2+ daily)</li>
-                    <li>Premium graphics & banners</li>
-                    <li>Professional video content</li>
-                    <li>Sports content & analysis</li>
-                    <li>Platform update storytelling</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🎬 Influencer Management</h3>
-                <ul>
-                    <li>10-20 active partnerships</li>
-                    <li>40+ creator content pieces</li>
-                    <li>Campaign management</li>
-                    <li>Performance tracking</li>
-                    <li>Contract negotiation</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🎯 Engagement & Growth</h3>
-                <ul>
-                    <li>Weekly contests & giveaways</li>
-                    <li>Daily community management</li>
-                    <li>Sports audience building</li>
-                    <li>Weekly performance reports</li>
-                    <li>Strategy optimization</li>
-                </ul>
+        <!-- Slide 9: Deliverables -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-box-open"></i> Monthly Deliverables</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-image"></i></div>
+                        <h3>📱 Content Creation</h3>
+                        <ul>
+                            <li>60+ HQ social posts (2+ daily)</li>
+                            <li>Premium graphics & banners</li>
+                            <li>Professional video content</li>
+                            <li>Sports content & analysis</li>
+                            <li>Platform update storytelling</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                        <h3>🎬 Influencer Management</h3>
+                        <ul>
+                            <li>10-20 active partnerships</li>
+                            <li>40+ creator content pieces</li>
+                            <li>Campaign management</li>
+                            <li>Performance tracking</li>
+                            <li>Contract negotiation</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+                        <h3>🎯 Engagement & Growth</h3>
+                        <ul>
+                            <li>Weekly contests & giveaways</li>
+                            <li>Daily community management</li>
+                            <li>Sports audience building</li>
+                            <li>Weekly performance reports</li>
+                            <li>Strategy optimization</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Slide 10 -->
-<div class="slide">
-    <div class="container">
-        <h2>Success Metrics & KPIs</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Content Quality</h3>
-                <ul>
-                    <li>Professional branding: <span class="highlight">100%</span></li>
-                    <li>HQ posts: <span class="highlight">2+ daily</span></li>
-                    <li>Engagement rate: <span class="highlight">5-8%</span></li>
-                    <li>Brand perception: <span class="highlight">+70%</span></li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Growth Metrics</h3>
-                <ul>
-                    <li>Follower growth: <span class="highlight">+40-60%</span></li>
-                    <li>Reach: <span class="highlight">500K+ monthly</span></li>
-                    <li>New users: <span class="highlight">1,500+ monthly</span></li>
-                    <li>Sports audience: <span class="highlight">+50%</span></li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Influencer Impact</h3>
-                <ul>
-                    <li>Reach: <span class="highlight">3M+ impressions</span></li>
-                    <li>Creator content: <span class="highlight">40+ pieces/mo</span></li>
-                    <li>CPA: <span class="highlight">&lt;$20</span></li>
-                    <li>ROI: <span class="highlight">4-5x</span></li>
-                </ul>
+        <!-- Slide 10: Success Metrics -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-trophy"></i> Success Metrics & KPIs</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>Content Quality</h3>
+                        <ul>
+                            <li>Professional branding: <span class="highlight">100%</span></li>
+                            <li>HQ posts: <span class="highlight">2+ daily</span></li>
+                            <li>Engagement rate: <span class="highlight">5-8%</span></li>
+                            <li>Brand perception: <span class="highlight">+70%</span></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Growth Metrics</h3>
+                        <ul>
+                            <li>Follower growth: <span class="highlight">+40-60%</span></li>
+                            <li>Reach: <span class="highlight">500K+ monthly</span></li>
+                            <li>New users: <span class="highlight">1,500+ monthly</span></li>
+                            <li>Sports audience: <span class="highlight">+50%</span></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-star"></i></div>
+                        <h3>Influencer Impact</h3>
+                        <ul>
+                            <li>Reach: <span class="highlight">3M+ impressions</span></li>
+                            <li>Creator content: <span class="highlight">40+ pieces/mo</span></li>
+                            <li>CPA: <span class="highlight">&lt;$20</span></li>
+                            <li>ROI: <span class="highlight">4-5x</span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Slide 11 -->
-<div class="slide">
-    <div class="container">
-        <h2>Flexible Investment Packages</h2>
-        <div class="grid">
-            <div class="card" style="border: 2px solid #00bfff;">
-                <div class="badge">⭐ STARTER</div>
-                <h3>Essential Package</h3>
-                <div class="price">$5K/mo</div>
-                <ul>
-                    <li>60+ HQ posts (2 daily)</li>
-                    <li>Professional branding overhaul</li>
-                    <li>10 influencer partnerships</li>
-                    <li>Basic sports content</li>
-                    <li>Weekly contests</li>
-                    <li>Monthly reporting</li>
-                </ul>
-            </div>
-            <div class="card" style="border: 2px solid #8a2be2;">
-                <div class="badge" style="background: #8a2be2;">🚀 GROWTH</div>
-                <h3>Complete Package</h3>
-                <div class="price">$10K/mo</div>
-                <ul>
-                    <li>80+ HQ posts (2-3 daily)</li>
-                    <li>Premium branding + video</li>
-                    <li>15-20 influencer partnerships</li>
-                    <li>Advanced sports content strategy</li>
-                    <li>Multiple weekly contests</li>
-                    <li>Weekly reporting + strategy calls</li>
-                    <li>Dedicated account manager</li>
-                </ul>
+        <!-- Slide 11: Pricing -->
+        <div class="slide">
+            <div class="container">
+                <h2><i class="fas fa-tags"></i> Flexible Investment Packages</h2>
+                <div class="grid-2" style="max-width: 1000px; margin: 0 auto;">
+                    <div class="pricing-card">
+                        <div class="badge badge-success">⭐ STARTER</div>
+                        <h3>Essential Package</h3>
+                        <div class="price">$5K<span style="font-size: 1.5rem; color: #999;">/mo</span></div>
+                        <ul style="text-align: left;">
+                            <li>60+ HQ posts (2 daily)</li>
+                            <li>Professional branding overhaul</li>
+                            <li>10 influencer partnerships</li>
+                            <li>Basic sports content</li>
+                            <li>Weekly contests</li>
+                            <li>Monthly reporting</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="badge">🚀 GROWTH</div>
+                        <h3>Complete Package</h3>
+                        <div class="price">$10K<span style="font-size: 1.5rem; color: #999;">/mo</span></div>
+                        <ul style="text-align: left;">
+                            <li>80+ HQ posts (2-3 daily)</li>
+                            <li>Premium branding + video</li>
+                            <li>15-20 influencer partnerships</li>
+                            <li>Advanced sports content strategy</li>
+                            <li>Multiple weekly contests</li>
+                            <li>Weekly reporting + strategy calls</li>
+                            <li>Dedicated account manager</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 3rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <p style="color: #aaa; font-size: 1.1rem;"><i class="fas fa-info-circle"></i> Custom packages available based on specific needs and goals</p>
+                </div>
             </div>
         </div>
-        <div class="card" style="margin-top: 2rem; text-align: center;">
-            <p style="color: #aaa;">Custom packages available based on specific needs and goals</p>
-        </div>
-    </div>
-</div>
 
-<!-- Slide 12 -->
-<div class="slide">
-    <div class="container" style="text-align: center;">
-        <h2>Let's Transform DGbet's Social Presence</h2>
-        <div class="grid" style="text-align: left; margin-top: 3rem;">
-            <div class="card">
-                <h3>Next Steps</h3>
-                <ul>
-                    <li>Discovery Call - Align on goals</li>
-                    <li>Brand Audit - Deep dive into current state</li>
-                    <li>Custom Strategy - Tailored 90-day plan</li>
-                    <li>Launch - Begin within 7 days</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Contact Mafexx</h3>
-                <p style="margin-top: 1rem; line-height: 2;">
-                    <strong>Email:</strong> bhagya@mafexx.com<br>
-                    <strong>Website:</strong> mafexx.com<br>
-                    <strong>Specialization:</strong> iGaming Marketing
+        <!-- Slide 12: Next Steps -->
+        <div class="slide">
+            <div class="container" style="text-align: center;">
+                <h2 style="text-align: center;"><i class="fas fa-handshake"></i> Let's Transform DGbet's Social Presence</h2>
+                <div class="grid-2" style="text-align: left; margin-top: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-tasks"></i></div>
+                        <h3>Next Steps</h3>
+                        <ul>
+                            <li>Discovery Call - Align on goals</li>
+                            <li>Brand Audit - Deep dive into current state</li>
+                            <li>Custom Strategy - Tailored 90-day plan</li>
+                            <li>Launch - Begin within 7 days</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-envelope"></i></div>
+                        <h3>Contact Mafexx</h3>
+                        <p style="margin-top: 1.5rem; line-height: 2.2; font-size: 1.1rem;">
+                            <i class="fas fa-envelope" style="color: #00bfff;"></i> <strong>Email:</strong> bhagya@mafexx.com<br>
+                            <i class="fas fa-globe" style="color: #8a2be2;"></i> <strong>Website:</strong> mafexx.com<br>
+                            <i class="fas fa-briefcase" style="color: #ffd700;"></i> <strong>Specialization:</strong> iGaming Marketing
+                        </p>
+                    </div>
+                </div>
+                <a href="mailto:bhagya@mafexx.com" class="btn">
+                    <i class="fas fa-calendar-check"></i> Schedule Discovery Call
+                </a>
+                <p style="margin-top: 3rem; color: #999; font-size: 1.1rem;">
+                    <i class="fas fa-clock"></i> First HQ content & influencer partnerships live within 14 days
                 </p>
             </div>
         </div>
-        <a href="mailto:bhagya@mafexx.com" class="btn">Schedule Discovery Call</a>
-        <p style="margin-top: 2rem; color: #aaa;">First HQ content & influencer partnerships live within 14 days</p>
     </div>
-</div>
 
-<div style="background: #000; padding: 2rem; text-align: center; color: #666;">
-    <p>To download as PDF: Press Ctrl+P (Windows) or Cmd+P (Mac) → Save as PDF</p>
-</div>
+    <div class="slide-footer">
+        <p><i class="fas fa-print"></i> To download as PDF: Press <strong>Ctrl+P</strong> (Windows) or <strong>Cmd+P</strong> (Mac) → Save as PDF</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 Mafexx | Professional iGaming Marketing Solutions</p>
+    </div>
 
 </body>
 </html>
